@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PruebaLaborario.Entities\PruebaLaborario.Entities.csproj" />
+    <ProjectReference Include="..\PruebaLaborario.Entities\PruebaLaboratorio.Entities.csproj" />
     <ProjectReference Include="..\PruebaLaboratorio.EFCore\PruebaLaboratorio.EFCore.csproj" />
   </ItemGroup>
 

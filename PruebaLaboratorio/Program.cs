@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using PruebaLaborario.Entities.Interfaces;
 using PruebaLaboratorio.EFCore;
+using PruebaLaboratorio.EFCore.Repository;
+using System.Text.Json.Serialization;
 
 namespace PruebaLaboratorio
 {
@@ -10,13 +13,15 @@ namespace PruebaLaboratorio
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles); ;
 
             //inyectar el dbContext 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<LaboratorioDBContext>(options =>
                                                                 options.UseSqlServer(connectionString));
 
+            //inyectar la interfaz
+            builder.Services.AddScoped<ITecnicoRepository, TecnicoRepository>();
 
             var app = builder.Build();
 
