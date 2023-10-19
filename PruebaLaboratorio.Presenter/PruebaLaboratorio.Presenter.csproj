@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PruebaLaborario.Entities\PruebaLaboratorio.Entities.csproj" />
+    <ProjectReference Include="..\PruebaLaboratorio.OutputPort\PruebaLaboratorio.OutputPort.csproj" />
+  </ItemGroup>
+
+</Project>

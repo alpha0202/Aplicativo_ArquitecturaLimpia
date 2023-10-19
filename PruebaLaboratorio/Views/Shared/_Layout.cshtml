@@ -22,8 +22,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                    
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Tecnico" asp-action="Index">Tecnicos</a>
                         </li>
                     </ul>
                 </div>
@@ -41,9 +42,24 @@
             &copy; 2023 - PruebaLaboratorio - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+     <input type="hidden" id="hdfOculto" value="@Url.Content("~")" />
+
+
+    <div id="divLoading" style="display:none;background-image:url(../img/loading.gif);
+           position:absolute;top:0;left:0;
+            width:100%;height:100%;
+             background-repeat:no-repeat;background-position:center;z-index:2000">
+        
+     </div>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+   
+
+    <script src="~/js/sweetalert.js" asp-append-version="true"></script>
+    <script src="~/js/generic.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

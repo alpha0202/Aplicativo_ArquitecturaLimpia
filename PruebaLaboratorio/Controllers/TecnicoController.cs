@@ -2,7 +2,6 @@
 using PruebaLaborario.Entities;
 using PruebaLaborario.Entities.Interfaces;
 using PruebaLaboratorio.Entities.Dto;
-using PruebaLaboratorio.Entities.DTO;
 
 namespace PruebaLaboratorio.Controllers
 {
@@ -20,7 +19,7 @@ namespace PruebaLaboratorio.Controllers
             return View();
         }
 
-        public IEnumerable<TecnicoElementoDTO> GetAllTecnicosElementos()
+        public List<Tecnico> GetAllTecnicosElementos()
         {
             return _tecnicoRepository.GetAllTecnicos();
         }

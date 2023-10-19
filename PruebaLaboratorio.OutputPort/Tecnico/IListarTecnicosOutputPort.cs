@@ -5,16 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaLaborario.Entities.Interfaces
+namespace PruebaLaboratorio.OutputPort.Tecnico
 {
-    public interface ITecnicoRepository
+    public interface IListarTecnicosOutputPort
     {
-
-        List<Tecnico> GetAllTecnicos();
-
-
-     
-
-
+        public void Handler(List<TecnicoElementoDTO> dTOs);
     }
 }

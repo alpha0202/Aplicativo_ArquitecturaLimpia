@@ -13,11 +13,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PruebaLaborario.Entities\PruebaLaboratorio.Entities.csproj" />
     <ProjectReference Include="..\PruebaLaboratorio.EFCore\PruebaLaboratorio.EFCore.csproj" />
+    <ProjectReference Include="..\PruebaLaboratorio.Interactor\PruebaLaboratorio.Interactor.csproj" />
+    <ProjectReference Include="..\PruebaLaboratorio.Presenter\PruebaLaboratorio.Presenter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Img\" />
   </ItemGroup>
 
 </Project>

@@ -24,7 +24,7 @@ namespace PruebaLaborario.Entities
 
         // Relación con Elementos asignados
      
-        public ICollection<TecnicoElemento> ElementosAsignados { get; set; }
+        public ICollection<TecnicoElemento> ElementosAsignados { get; set; } = new List<TecnicoElemento>();
 
 
     }

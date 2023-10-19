@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using PruebaLaborario.Entities.Interfaces;
 using PruebaLaboratorio.EFCore;
 using PruebaLaboratorio.EFCore.Repository;
+using PruebaLaboratorio.Interactor;
+using PruebaLaboratorio.Presenter;
 using System.Text.Json.Serialization;
 
 namespace PruebaLaboratorio
@@ -22,6 +24,12 @@ namespace PruebaLaboratorio
 
             //inyectar la interfaz
             builder.Services.AddScoped<ITecnicoRepository, TecnicoRepository>();
+
+            //inyectar context interactor
+            builder.Services.DependencyInteractor();
+            //inyectar context presenter
+            builder.Services.DependencyPresenter();
+
 
             var app = builder.Build();
 

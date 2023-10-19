@@ -3,15 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio", "PruebaLaboratorio\PruebaLaboratorio.csproj", "{17A017EC-2A37-4459-B64E-58167657CA56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaLaboratorio", "PruebaLaboratorio\PruebaLaboratorio.csproj", "{17A017EC-2A37-4459-B64E-58167657CA56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enterprise Business Rules", "Enterprise Business Rules", "{0767F582-057A-4FCB-BC85-13B8BFC106E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.Entities", "PruebaLaborario.Entities\PruebaLaboratorio.Entities.csproj", "{14F52B14-1282-487D-9C36-45E341020758}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaLaboratorio.Entities", "PruebaLaborario.Entities\PruebaLaboratorio.Entities.csproj", "{14F52B14-1282-487D-9C36-45E341020758}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.EFCore", "PruebaLaboratorio.EFCore\PruebaLaboratorio.EFCore.csproj", "{DE11B3A1-8FCB-430A-A458-3DE8C0665C99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaLaboratorio.EFCore", "PruebaLaboratorio.EFCore\PruebaLaboratorio.EFCore.csproj", "{DE11B3A1-8FCB-430A-A458-3DE8C0665C99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface Adapter", "Interface Adapter", "{5D3AF783-1266-476E-ADB6-DB93639DE0C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Business Rules", "Application Business Rules", "{26195D79-6678-4697-B73C-72E0940F1100}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.InputPort", "PruebaLaboratorio.InputPort\PruebaLaboratorio.InputPort.csproj", "{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.Interactor", "PruebaLaboratorio.Interactor\PruebaLaboratorio.Interactor.csproj", "{BD90FA57-22FB-4EB4-AB37-F76C96698BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.OutputPort", "PruebaLaboratorio.OutputPort\PruebaLaboratorio.OutputPort.csproj", "{895D1B4D-88C1-4F33-AF86-52EE8F950974}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks and Driver", "Frameworks and Driver", "{8619F3D5-4D74-47D0-BCDD-D18DF3BD343E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.Presenter", "PruebaLaboratorio.Presenter\PruebaLaboratorio.Presenter.csproj", "{8D328091-04CD-42EC-8654-277F681A2F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,9 +43,34 @@ Global
 		{DE11B3A1-8FCB-430A-A458-3DE8C0665C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE11B3A1-8FCB-430A-A458-3DE8C0665C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE11B3A1-8FCB-430A-A458-3DE8C0665C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD90FA57-22FB-4EB4-AB37-F76C96698BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD90FA57-22FB-4EB4-AB37-F76C96698BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD90FA57-22FB-4EB4-AB37-F76C96698BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD90FA57-22FB-4EB4-AB37-F76C96698BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895D1B4D-88C1-4F33-AF86-52EE8F950974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895D1B4D-88C1-4F33-AF86-52EE8F950974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895D1B4D-88C1-4F33-AF86-52EE8F950974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895D1B4D-88C1-4F33-AF86-52EE8F950974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D328091-04CD-42EC-8654-277F681A2F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D328091-04CD-42EC-8654-277F681A2F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D328091-04CD-42EC-8654-277F681A2F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D328091-04CD-42EC-8654-277F681A2F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17A017EC-2A37-4459-B64E-58167657CA56} = {8619F3D5-4D74-47D0-BCDD-D18DF3BD343E}
+		{14F52B14-1282-487D-9C36-45E341020758} = {0767F582-057A-4FCB-BC85-13B8BFC106E4}
+		{DE11B3A1-8FCB-430A-A458-3DE8C0665C99} = {5D3AF783-1266-476E-ADB6-DB93639DE0C3}
+		{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9} = {26195D79-6678-4697-B73C-72E0940F1100}
+		{BD90FA57-22FB-4EB4-AB37-F76C96698BEF} = {26195D79-6678-4697-B73C-72E0940F1100}
+		{895D1B4D-88C1-4F33-AF86-52EE8F950974} = {26195D79-6678-4697-B73C-72E0940F1100}
+		{8D328091-04CD-42EC-8654-277F681A2F4A} = {5D3AF783-1266-476E-ADB6-DB93639DE0C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D8148BD-28D6-4DE0-BD33-71F23A3E95DE}

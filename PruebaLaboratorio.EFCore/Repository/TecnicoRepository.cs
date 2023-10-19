@@ -2,7 +2,6 @@
 using PruebaLaborario.Entities;
 using PruebaLaborario.Entities.Interfaces;
 using PruebaLaboratorio.Entities.Dto;
-using PruebaLaboratorio.Entities.DTO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,35 +21,36 @@ namespace PruebaLaboratorio.EFCore.Repository
             _dBContext = dBContext;
         }
 
-        public IEnumerable<TecnicoElementoDTO> GetAllTecnicos()
+        public List<Tecnico> GetAllTecnicos()
         {
-            //var dataLst =  _dBContext.Tecnicos.Include(e => e.ElementosAsignados)
-            //                                    .ThenInclude(t=>t.Elemento)
-            //                                .Include(s=>s.Sucursal)                             
-            //                                .ToList();
+           return _dBContext.Tecnicos.Include(e => e.ElementosAsignados)
+                                                .ThenInclude(t => t.Elemento)
+                                            .Include(s => s.Sucursal)
+                                            .ToList();
+            
+            //var data =   _dBContext.Tecnicos.Select(a => new TecnicoDTO
+            //  {
+            //      Nombre = a.Nombre,
+            //      Codigo = a.Codigo,
+            //      SueldoBase = (decimal)a.SueldoBase,
+            //      NombreSucursal = a.Sucursal.Nombre,
+            //      ElementosAsignados = a.ElementosAsignados,
 
-          //var data =   _dBContext.Tecnicos.Select(a => new TecnicoDTO
-          //  {
-          //      Nombre = a.Nombre,
-          //      Codigo = a.Codigo,
-          //      SueldoBase = (decimal)a.SueldoBase,
-          //      NombreSucursal = a.Sucursal.Nombre,
-          //      ElementosAsignados = a.ElementosAsignados,
+            //  }).ToList();
 
-          //  }).ToList();
+            //var data = _dBContext.TecnicoElementos.Select(a => new TecnicoElementoDTO
+            //{
+            //    TecnicoElementoId = a.TecnicoElementoId,
+            //    Nombre = a.Tecnico.Nombre,
+            //    Codigo = a.Tecnico.Codigo,
+            //    SueldoBase = (decimal)a.Tecnico.SueldoBase,
+            //    Sucursal = a.Tecnico.Sucursal.Nombre,
+            //    CantidadElementos = a.CantidadAsignada
 
-            var data = _dBContext.TecnicoElementos.Select(a => new TecnicoElementoDTO
-            {
-                Nombre = a.Tecnico.Nombre,
-                Codigo = a.Tecnico.Codigo,
-                SueldoBase = (decimal)a.Tecnico.SueldoBase,
-                CantidadElementos = a.CantidadAsignada,
-                Sucursal = a.Tecnico.Sucursal.Nombre
-                
 
-            }).ToList();
+            //}).ToList();
 
-            return data;
+            //return data;
         }
 
     }
