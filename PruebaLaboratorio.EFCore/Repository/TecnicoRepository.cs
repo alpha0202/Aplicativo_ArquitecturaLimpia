@@ -53,5 +53,50 @@ namespace PruebaLaboratorio.EFCore.Repository
             //return data;
         }
 
+
+        public bool AgregarTecnico(GuardarTecnicoDTO tecnico)
+        {
+            if (tecnico.CantidadElementos <= 0 || tecnico.CantidadElementos >= 10)
+            {
+                throw new Exception("la cantidad debe estar en el rango establecido entre 1 y 10 cantidades por elemento asignado");
+
+            }
+            Tecnico tec = new Tecnico
+            {
+                Nombre = tecnico.NombreTec,
+                Codigo = tecnico.CodigoTec,
+                SueldoBase=tecnico.SueldoBaseTec,
+                ElementosAsignados = new List<TecnicoElemento>
+                {
+                    new TecnicoElemento
+                    {
+                        TecnicoId = tecnico.IdTecnico,
+                        CantidadAsignada = tecnico.CantidadElementos,
+                        Elemento = new Elemento
+                        {
+                            Nombre = tecnico.NombreElemento
+                        }
+                    }
+                },
+                Sucursal = new Sucursal
+                {
+                    Nombre = tecnico.SucursalNombre
+                }
+            };
+
+            _dBContext.Add(tec);
+            //_dBContext.AddRange(tecnico.ElementosAsignados);
+            _dBContext.SaveChanges();
+
+
+
+
+
+
+            return true;
+        }
+
+
+
     }
 }

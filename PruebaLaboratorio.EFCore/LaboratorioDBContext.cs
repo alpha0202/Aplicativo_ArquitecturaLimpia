@@ -34,10 +34,10 @@ namespace PruebaLaboratorio.EFCore
 
         }
 
-        public DbSet<Tecnico> Tecnicos { get; set; }
-        public DbSet<Sucursal> Sucursales { get; set; }
-        public DbSet<Elemento> Elementos { get; set; }
-        public DbSet<TecnicoElemento> TecnicoElementos { get; set; }
+        public virtual DbSet<Tecnico> Tecnicos { get; set; }
+        public virtual DbSet<Sucursal> Sucursales { get; set; }
+        public virtual DbSet<Elemento> Elementos { get; set; }
+        public virtual DbSet<TecnicoElemento> TecnicoElementos { get; set; }
 
     }
 }

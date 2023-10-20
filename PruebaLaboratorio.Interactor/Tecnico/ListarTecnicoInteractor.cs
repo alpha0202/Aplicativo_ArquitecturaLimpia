@@ -32,7 +32,7 @@ namespace PruebaLaboratorio.Interactor.Tecnico
                 CodigoTec = a.Codigo,
                 SueldoBaseTec = (decimal)a.SueldoBase,
                 SucursalNombre = a.Sucursal.Nombre,
-                CantidadElementos = a.ElementosAsignados.First().CantidadAsignada
+                CantidadElementos = a.ElementosAsignados.Count
 
 
             }).ToList();

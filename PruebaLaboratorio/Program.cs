@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PruebaLaborario.Entities.Interfaces;
 using PruebaLaboratorio.EFCore;
 using PruebaLaboratorio.EFCore.Repository;
+using PruebaLaboratorio.Entities.Interfaces;
 using PruebaLaboratorio.Interactor;
 using PruebaLaboratorio.Presenter;
 using System.Text.Json.Serialization;
@@ -22,8 +23,11 @@ namespace PruebaLaboratorio
             builder.Services.AddDbContext<LaboratorioDBContext>(options =>
                                                                 options.UseSqlServer(connectionString));
 
-            //inyectar la interfaz
+            //inyectar la interfaz 
             builder.Services.AddScoped<ITecnicoRepository, TecnicoRepository>();
+            builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
+
+
 
             //inyectar context interactor
             builder.Services.DependencyInteractor();

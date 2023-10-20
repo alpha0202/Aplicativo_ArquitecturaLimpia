@@ -2,16 +2,22 @@
 using PruebaLaborario.Entities;
 using PruebaLaborario.Entities.Interfaces;
 using PruebaLaboratorio.Entities.Dto;
+using PruebaLaboratorio.InputPort.Tecnico;
+using PruebaLaboratorio.OutputPort.Tecnico;
+using PruebaLaboratorio.Presenter;
 
 namespace PruebaLaboratorio.Controllers
 {
     public class TecnicoController : Controller
     {
-        private readonly ITecnicoRepository _tecnicoRepository;
+        private readonly IListarTecnicosInputPort _inputPortlistar;
+        private readonly IListarTecnicosOutputPort _outputPortList;
 
-        public TecnicoController(ITecnicoRepository tecnicoRepository)
+        public TecnicoController(IListarTecnicosInputPort inputPortlistar, 
+                                 IListarTecnicosOutputPort outputPortList )
         {
-            _tecnicoRepository = tecnicoRepository;
+            _inputPortlistar = inputPortlistar;
+            _outputPortList = outputPortList;
         }
 
         public IActionResult Index()
@@ -19,10 +25,14 @@ namespace PruebaLaboratorio.Controllers
             return View();
         }
 
-        public List<Tecnico> GetAllTecnicosElementos()
+        public List<TecnicoElementoDTO> GetAllTecnicosElementos()
         {
-            return _tecnicoRepository.GetAllTecnicos();
+            _inputPortlistar.Handler();
+            return ((IPresenter<List<TecnicoElementoDTO>>)_outputPortList).Content;
         }
+
+     
+
 
     }
 }
