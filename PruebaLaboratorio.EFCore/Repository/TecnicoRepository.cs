@@ -27,74 +27,69 @@ namespace PruebaLaboratorio.EFCore.Repository
                                                 .ThenInclude(t => t.Elemento)
                                             .Include(s => s.Sucursal)
                                             .ToList();
-            
-            //var data =   _dBContext.Tecnicos.Select(a => new TecnicoDTO
-            //  {
-            //      Nombre = a.Nombre,
-            //      Codigo = a.Codigo,
-            //      SueldoBase = (decimal)a.SueldoBase,
-            //      NombreSucursal = a.Sucursal.Nombre,
-            //      ElementosAsignados = a.ElementosAsignados,
-
-            //  }).ToList();
-
-            //var data = _dBContext.TecnicoElementos.Select(a => new TecnicoElementoDTO
-            //{
-            //    TecnicoElementoId = a.TecnicoElementoId,
-            //    Nombre = a.Tecnico.Nombre,
-            //    Codigo = a.Tecnico.Codigo,
-            //    SueldoBase = (decimal)a.Tecnico.SueldoBase,
-            //    Sucursal = a.Tecnico.Sucursal.Nombre,
-            //    CantidadElementos = a.CantidadAsignada
-
-
-            //}).ToList();
-
-            //return data;
+          
         }
 
 
-        public bool AgregarTecnico(GuardarTecnicoDTO tecnico)
+        public bool AgregarTecnico(Tecnico tecnico)
         {
-            if (tecnico.CantidadElementos <= 0 || tecnico.CantidadElementos >= 10)
-            {
-                throw new Exception("la cantidad debe estar en el rango establecido entre 1 y 10 cantidades por elemento asignado");
-
-            }
-            Tecnico tec = new Tecnico
-            {
-                Nombre = tecnico.NombreTec,
-                Codigo = tecnico.CodigoTec,
-                SueldoBase=tecnico.SueldoBaseTec,
-                ElementosAsignados = new List<TecnicoElemento>
-                {
-                    new TecnicoElemento
-                    {
-                        TecnicoId = tecnico.IdTecnico,
-                        CantidadAsignada = tecnico.CantidadElementos,
-                        Elemento = new Elemento
-                        {
-                            Nombre = tecnico.NombreElemento
-                        }
-                    }
-                },
-                Sucursal = new Sucursal
-                {
-                    Nombre = tecnico.SucursalNombre
-                }
-            };
-
-            _dBContext.Add(tec);
-            //_dBContext.AddRange(tecnico.ElementosAsignados);
+            bool result = false;
+            _dBContext.Add(tecnico);
             _dBContext.SaveChanges();
+            result = true;
 
+            return result;
 
+            //bool result = false;
 
+            //try
+            //{
+            //    if (tecnico.CantidadElementos <= 0 || tecnico.CantidadElementos >= 10)
+            //    {
+            //        throw new Exception("la cantidad debe estar en el rango establecido entre 1 y 10 cantidades por elemento asignado");
 
+            //    }
+            //    Tecnico tec = new Tecnico
+            //    {
+            //        Nombre = tecnico.NombreTec,
+            //        Codigo = tecnico.CodigoTec,
+            //        SueldoBase=tecnico.SueldoBaseTec,
+            //        ElementosAsignados = new List<TecnicoElemento>
+            //        {
+            //            new TecnicoElemento
+            //            {
+            //                TecnicoId = tecnico.IdTecnico,
+            //                CantidadAsignada = tecnico.CantidadElementos,
+            //                Elemento = new Elemento
+            //                {
+            //                    Nombre = tecnico.NombreElemento
+            //                }
+            //            }
+            //        },
+            //        Sucursal = new Sucursal
+            //        {
+            //            Nombre = tecnico.SucursalNombre
+            //        }
+            //    };
 
+            //    _dBContext.Add(tec);
+            //    //_dBContext.AddRange(tecnico.ElementosAsignados);
+            //    _dBContext.SaveChanges();
+            //    result = true;
 
-            return true;
+            //}
+            //catch (Exception)
+            //{
+
+            //    result = false;
+            //}
+
+            //return result;
         }
+
+
+
+
 
 
 

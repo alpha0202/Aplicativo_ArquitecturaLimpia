@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PruebaLaborario.Entities\PruebaLaboratorio.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

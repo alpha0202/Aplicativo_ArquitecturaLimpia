@@ -13,7 +13,7 @@ namespace PruebaLaborario.Entities.Interfaces
         List<Tecnico> GetAllTecnicos();
 
 
-        public bool AgregarTecnico(GuardarTecnicoDTO tecnico);
+        public bool AgregarTecnico(Tecnico tecnico);
 
 
     }
