@@ -26,6 +26,8 @@ namespace PruebaLaboratorio
             //inyectar la interfaz 
             builder.Services.AddScoped<ITecnicoRepository, TecnicoRepository>();
             builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
+            builder.Services.AddScoped<IElementoRepository, ElementoRepository>();
+
 
 
 

@@ -99,6 +99,17 @@ function validarKeyPress(idformulario) {
                     e.preventDefault();
                 }
             }
+
+            //solo letras y numeros
+            resultado = clases.filter(p => p == "sln")
+            if (resultado.length > 0) {
+                var cadena = e.target.value + String.fromCharCode(e.keyCode)
+                if (!/^[a-zA-Z,0-9]+$/.test(cadena)) {
+                    e.preventDefault();
+                }
+            }
+
+
             //Letras con espacio en blanco
             resultado = clases.filter(p => p == "slcenb")
             if (resultado.length > 0) {
@@ -117,6 +128,7 @@ function validarKeyPress(idformulario) {
                 }
 
             }
+
             resultado = clases.filter(p => p == "snyd")
             if (resultado.length > 0) {
 

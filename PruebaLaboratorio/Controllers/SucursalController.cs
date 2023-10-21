@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PruebaLaborario.Entities;
 using PruebaLaborario.Entities.Interfaces;
+using PruebaLaboratorio.EFCore.Repository;
 using PruebaLaboratorio.Entities.Dto;
 using PruebaLaboratorio.Entities.Interfaces;
 
@@ -27,12 +29,44 @@ namespace PruebaLaboratorio.Controllers
           return  _sucursalesRepository.GetSucursal();
         }
 
-        public bool SaveTecnico(GuardarTecnicoDTO tecnico)
-        {
-            bool res;
-            res = _tecnico.AgregarTecnico(tecnico);
-            return res;
-        }
 
+
+        #region pruebas de acciones tecnicos
+        //public Tecnico GetTecnicobyId(int id)
+        //{
+        //    var res = _tecnico.GetByIDTecnico(id);
+        //    return res;
+        //}
+
+        //public List<Tecnico> GetAllTecnicos()
+        //{
+        //    var res = _tecnico.GetAllTecnicos();
+        //    return res;
+        //}
+
+        //public List<Tecnico> FilterByNombreTecnico(string nombre)
+        //{
+        //    var data = _tecnico.FilterByNombreTecnico(nombre);
+        //    return data;
+        //}
+
+        //public List<TecnicoElementoDTO> Tecnicos(TecnicoElementoDTO dto)
+        //{
+        //    var data = _tecnico.GetAllTecnicos().Select(a => new TecnicoElementoDTO
+        //     {
+        //         TecnicoId = a.TecnicoId,
+        //         NombreTec = a.Nombre,
+        //         CodigoTec = a.Codigo,
+        //         SueldoBaseTec = (decimal)a.SueldoBase,
+        //         SucursalNombre = a.Sucursal.Nombre,
+        //         CantidadElementos = a.ElementosAsignados.Count
+
+
+        //     }).ToList();
+
+        //    return data;
+
+        //}
+        #endregion
     }
 }

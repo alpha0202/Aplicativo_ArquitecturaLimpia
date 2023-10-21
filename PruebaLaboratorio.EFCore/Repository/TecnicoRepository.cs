@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PruebaLaboratorio.EFCore.Repository
 {
@@ -23,75 +24,106 @@ namespace PruebaLaboratorio.EFCore.Repository
 
         public List<Tecnico> GetAllTecnicos()
         {
-           return _dBContext.Tecnicos.Include(e => e.ElementosAsignados)
+            List<Tecnico> lstRes = new List<Tecnico>();
+
+           lstRes = _dBContext.Tecnicos.Include(e => e.ElementosAsignados)
                                                 .ThenInclude(t => t.Elemento)
                                             .Include(s => s.Sucursal)
                                             .ToList();
-          
+          return lstRes;
         }
 
 
         public bool AgregarTecnico(Tecnico tecnico)
         {
             bool result = false;
+
             _dBContext.Add(tecnico);
-            _dBContext.SaveChanges();
-            result = true;
+            _dBContext.AddRange(tecnico.ElementosAsignados);
+           var res =  _dBContext.SaveChanges();
+            if(res >=  0)
+            {
+                result = true;
+
+            }
+            else
+            {
+                result = false;
+            }
+
 
             return result;
 
-            //bool result = false;
-
-            //try
-            //{
-            //    if (tecnico.CantidadElementos <= 0 || tecnico.CantidadElementos >= 10)
-            //    {
-            //        throw new Exception("la cantidad debe estar en el rango establecido entre 1 y 10 cantidades por elemento asignado");
-
-            //    }
-            //    Tecnico tec = new Tecnico
-            //    {
-            //        Nombre = tecnico.NombreTec,
-            //        Codigo = tecnico.CodigoTec,
-            //        SueldoBase=tecnico.SueldoBaseTec,
-            //        ElementosAsignados = new List<TecnicoElemento>
-            //        {
-            //            new TecnicoElemento
-            //            {
-            //                TecnicoId = tecnico.IdTecnico,
-            //                CantidadAsignada = tecnico.CantidadElementos,
-            //                Elemento = new Elemento
-            //                {
-            //                    Nombre = tecnico.NombreElemento
-            //                }
-            //            }
-            //        },
-            //        Sucursal = new Sucursal
-            //        {
-            //            Nombre = tecnico.SucursalNombre
-            //        }
-            //    };
-
-            //    _dBContext.Add(tec);
-            //    //_dBContext.AddRange(tecnico.ElementosAsignados);
-            //    _dBContext.SaveChanges();
-            //    result = true;
-
-            //}
-            //catch (Exception)
-            //{
-
-            //    result = false;
-            //}
-
-            //return result;
+       
         }
 
+        public void ActualizarTecnico(Tecnico tecnico)
+        {
+            if (tecnico is null)
+            {
+                throw new Exception("no existe información para actualizar");
+
+            }
+
+          var tec = new Tecnico();
+             tec = _dBContext.Tecnicos.Where(t => t.TecnicoId == tecnico.TecnicoId).FirstOrDefault();
+            if (tec != null)
+            {
+                tec.Nombre = tecnico.Nombre;
+                tec.SueldoBase = tecnico.SueldoBase;
+                tec.Codigo = tecnico.Codigo;
+                tec.ElementosAsignados = tecnico.ElementosAsignados;
+                tec.Sucursal = tecnico.Sucursal;
+
+            }
+            _dBContext.Tecnicos.Update(tec);
+            _dBContext.SaveChanges();
+
+        }
+
+        public Tecnico GetByIDTecnico(int id)
+        {
+            var tec = _dBContext.Tecnicos.Include(e => e.ElementosAsignados)
+                                            .ThenInclude(t => t.Elemento)
+                                          .Include(s => s.Sucursal)
+                                          .Where(t => t.TecnicoId == id)
+                                          .FirstOrDefault();
+
+            return tec;
+        }
+
+        public List<Tecnico> FilterByNombreTecnico(string nombre)
+        {
+            var tecFilter = _dBContext.Tecnicos.Where(t => t.Nombre.Contains(nombre))
+                                                .Include(e => e.ElementosAsignados)                                   
+                                                 .ThenInclude(t => t.Elemento)
+                                                .Include(s => s.Sucursal)
+                                                .ToList();
+            return tecFilter;
+        }
+
+        public bool BorrarTecnico(int id)
+        {
+            bool result = false;
+            var tec = _dBContext.Tecnicos.Include(e => e.ElementosAsignados)
+                                           .ThenInclude(t => t.Elemento)
+                                         .Include(s => s.Sucursal)
+                                         .Where(t => t.TecnicoId == id)
+                                         .FirstOrDefault();
+
+            if (tec == null)
+            {
+                return result= false;
+            }
+            else
+            {
+                _dBContext.TecnicoElementos.RemoveRange(tec.ElementosAsignados);
+                _dBContext.Tecnicos.Remove(tec);
+                _dBContext.SaveChanges();
+            }
 
 
-
-
-
-
+            return result;
+        }
     }
 }

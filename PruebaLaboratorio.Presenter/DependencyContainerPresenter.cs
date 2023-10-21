@@ -15,6 +15,9 @@ namespace PruebaLaboratorio.Presenter
         {
 
             services.AddScoped<IListarTecnicosOutputPort, ListarTecnicosPresenter>();
+            services.AddScoped<IGuardarTecnicoOutputPort, GuardarTecnicoPresenter>();
+            services.AddScoped<IFiltrarTecnicoOutputPort, FiltrarTecnicoPresenter>();
+
             return services;
         }
 

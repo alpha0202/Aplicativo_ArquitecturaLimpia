@@ -15,6 +15,14 @@ namespace PruebaLaborario.Entities.Interfaces
 
         public bool AgregarTecnico(Tecnico tecnico);
 
+        public void ActualizarTecnico(Tecnico tecnico);
 
+
+        public Tecnico GetByIDTecnico(int id);
+
+        public List<Tecnico> FilterByNombreTecnico(string nombre);
+
+
+        public bool BorrarTecnico(int id);
     }
 }

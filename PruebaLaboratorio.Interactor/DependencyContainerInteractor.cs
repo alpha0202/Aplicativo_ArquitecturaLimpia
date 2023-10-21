@@ -14,6 +14,8 @@ namespace PruebaLaboratorio.Interactor
         public static IServiceCollection DependencyInteractor(this IServiceCollection services)
         {
             services.AddScoped<IListarTecnicosInputPort, ListarTecnicoInteractor>();
+            services.AddScoped<IGuardarTecnicoInputPort, GuardarTecnicoInteractor>();
+            services.AddScoped<IFiltrarTecnicoInputPort, FiltrarTecnicoInteractor>();
 
             return services;
         }

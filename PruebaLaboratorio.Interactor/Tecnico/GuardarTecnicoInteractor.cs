@@ -39,27 +39,37 @@ namespace PruebaLaboratorio.Interactor.Tecnico
                     Nombre = tecnico.NombreTec,
                     Codigo = tecnico.CodigoTec,
                     SueldoBase = tecnico.SueldoBaseTec,
+                    SucursalId = tecnico.SucursalId,
                     ElementosAsignados = new List<TecnicoElemento>
                     {
                         new TecnicoElemento
                         {
                             TecnicoId = tecnico.IdTecnico,
                             CantidadAsignada = tecnico.CantidadElementos,
-                            Elemento = new Elemento
-                            {
-                                Nombre = tecnico.NombreElemento
-                            }
+                            ElementoId = tecnico.ElementoId,
+                            
+                            //new Elemento
+                            //{
+                            //    Nombre = tecnico.NombreElemento
+                            //}
                         }
                     },
-                    Sucursal = new Sucursal
-                    {
-                        Nombre = tecnico.SucursalNombre
-                    }
+                    //Sucursal = new Sucursal
+                    //{
+                    //    Nombre = tecnico.SucursalNombre
+                    //}
                 };
 
-                _tecnicoRepository.AgregarTecnico(tec);
-                //_dBContext.AddRange(tecnico.ElementosAsignados);
-               
+                if(tecnico.IdTecnico == 0)
+                {
+                    _tecnicoRepository.AgregarTecnico(tec);
+                    //_dBContext.AddRange(tecnico.ElementosAsignados);
+                }
+                else
+                {
+                    _tecnicoRepository.ActualizarTecnico(tec);
+                }
+
                 result = true;
 
             }
