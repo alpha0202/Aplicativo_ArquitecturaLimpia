@@ -56,7 +56,7 @@ namespace PruebaLaboratorio
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Tecnico}/{action=Index}/{id?}");
 
             app.Run();
         }
