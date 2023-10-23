@@ -32,11 +32,27 @@ namespace PruebaLaboratorio.Controllers
 
 
         #region pruebas de acciones tecnicos
-        //public Tecnico GetTecnicobyId(int id)
-        //{
-        //    var res = _tecnico.GetByIDTecnico(id);
-        //    return res;
-        //}
+        public FiltrarByIdDTO GetTecnicobyId(int id)
+        {
+            var TecFilter = _tecnico.GetByIDTecnico(id);
+            var elementoid = _tecnico.GetIDElementoAsignado(id);
+
+            FiltrarByIdDTO byIdDTO = new FiltrarByIdDTO
+            {
+                IdTecnico = TecFilter.TecnicoId,
+                NombreTec = TecFilter.Nombre,
+                CodigoTec = TecFilter.Codigo,
+                SueldoBaseTec = (decimal)TecFilter.SueldoBase,
+                SucursalId = (int)TecFilter.SucursalId,
+                ElementoId = (int)elementoid
+            };
+
+            return byIdDTO;
+
+
+
+
+        }
 
         //public List<Tecnico> GetAllTecnicos()
         //{
@@ -53,16 +69,16 @@ namespace PruebaLaboratorio.Controllers
         //public List<TecnicoElementoDTO> Tecnicos(TecnicoElementoDTO dto)
         //{
         //    var data = _tecnico.GetAllTecnicos().Select(a => new TecnicoElementoDTO
-        //     {
-        //         TecnicoId = a.TecnicoId,
-        //         NombreTec = a.Nombre,
-        //         CodigoTec = a.Codigo,
-        //         SueldoBaseTec = (decimal)a.SueldoBase,
-        //         SucursalNombre = a.Sucursal.Nombre,
-        //         CantidadElementos = a.ElementosAsignados.Count
+        //    {
+        //        TecnicoId = a.TecnicoId,
+        //        NombreTec = a.Nombre,
+        //        CodigoTec = a.Codigo,
+        //        SueldoBaseTec = (decimal)a.SueldoBase,
+        //        SucursalNombre = a.Sucursal.Nombre,
+        //        CantidadElementos = a.ElementosAsignados.Count
 
 
-        //     }).ToList();
+        //    }).ToList();
 
         //    return data;
 

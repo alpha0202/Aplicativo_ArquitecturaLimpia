@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PruebaLaboratorio.Entities.Dto
 {
-    public class GuardarTecnicoDTO
+    public class FiltrarByIdDTO
     {
+      
         public int IdTecnico { get; set; }
         public string NombreTec { get; set; }
         public string CodigoTec { get; set; }
@@ -15,5 +16,6 @@ namespace PruebaLaboratorio.Entities.Dto
         public int SucursalId { get; set; }
         public int ElementoId { get; set; }
         public int CantidadElementos { get; set; }
+
     }
 }

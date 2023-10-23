@@ -19,7 +19,7 @@ async function ListTecnicos() {
         editar: true,
         eliminar: true,
         popup: true,
-        titlePopup:"Nuevo Tecnico"
+        titlePopup:"Tecnico"
 
 
     },
@@ -29,7 +29,7 @@ async function ListTecnicos() {
                 [
                     {
                         class: "col-md-6",
-                        label: "Ingrese nombre tecnico",
+                        label: "Filtrar nombre tecnico",
                         type: "text",
                         name: "nombre"
                     }
@@ -37,8 +37,6 @@ async function ListTecnicos() {
             ]
 
         },
-
-
         {
             type: "popup",
             urlguardar: "Tecnico/SaveTecnico",
@@ -50,7 +48,7 @@ async function ListTecnicos() {
                         class: "d-none",
                         label: "Id Tecnico",
                         type: "text",
-                        name: "tecnicoid"
+                        name: "idTecnico"
                     },
                     {
                         class: "col-md-6",

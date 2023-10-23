@@ -17,15 +17,17 @@ namespace PruebaLaboratorio.Interactor.Tecnico
         private readonly ITecnicoRepository _tecnicoRepository;
         private readonly IGuardarTecnicoOutputPort _outputPortGuardar;
 
-        public GuardarTecnicoInteractor(ITecnicoRepository tecnicoRepository,IGuardarTecnicoOutputPort outputPortGuardar)
+        public GuardarTecnicoInteractor(ITecnicoRepository tecnicoRepository,
+                                        IGuardarTecnicoOutputPort outputPortGuardar)
         {
             _tecnicoRepository = tecnicoRepository;
             _outputPortGuardar = outputPortGuardar;
         }
 
+
         public void Handler(GuardarTecnicoDTO tecnico)
         {
-            bool result = false;
+            int result = 0;
 
             try
             {
@@ -64,19 +66,20 @@ namespace PruebaLaboratorio.Interactor.Tecnico
                 {
                     _tecnicoRepository.AgregarTecnico(tec);
                     //_dBContext.AddRange(tecnico.ElementosAsignados);
+                    result = 1;
                 }
                 else
                 {
                     _tecnicoRepository.ActualizarTecnico(tec);
+                    result = 1;
                 }
 
-                result = true;
 
             }
             catch (Exception)
             {
 
-                result = false;
+                result = 0;
             }
 
             _outputPortGuardar.Hadler(result);

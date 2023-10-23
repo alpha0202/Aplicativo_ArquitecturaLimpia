@@ -128,7 +128,7 @@ function validarKeyPress(idformulario) {
                 }
 
             }
-
+            //solo numeros y decimales
             resultado = clases.filter(p => p == "snyd")
             if (resultado.length > 0) {
 
@@ -595,6 +595,8 @@ async function fetchPost(url, tiporespuesta, frm, callback) {
         if (tiporespuesta == "json")
             res = await res.json();
         else if (tiporespuesta == "text")
+            res = await res.text();
+        else if (tiporespuesta == "bool")
             res = await res.text();
         //JSON (Object)
         callback(res)

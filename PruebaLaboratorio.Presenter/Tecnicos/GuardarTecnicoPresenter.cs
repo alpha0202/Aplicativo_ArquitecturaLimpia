@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace PruebaLaboratorio.Presenter.Tecnicos
 {
-    public class GuardarTecnicoPresenter : IGuardarTecnicoOutputPort, IPresenter<bool>
+    public class GuardarTecnicoPresenter : IGuardarTecnicoOutputPort, IPresenter<int>
     {
-        public bool Content {get; private set;}
+        public int Content {get; private set;}
 
-        public void Hadler(bool res)
+        public void Hadler(int res)
         {
             Content = res;
         }

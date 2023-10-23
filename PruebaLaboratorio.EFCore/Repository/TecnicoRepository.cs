@@ -34,25 +34,25 @@ namespace PruebaLaboratorio.EFCore.Repository
         }
 
 
-        public bool AgregarTecnico(Tecnico tecnico)
+        public void AgregarTecnico(Tecnico tecnico)
         {
-            bool result = false;
+            //int result = 0;
 
             _dBContext.Add(tecnico);
             _dBContext.AddRange(tecnico.ElementosAsignados);
            var res =  _dBContext.SaveChanges();
-            if(res >=  0)
-            {
-                result = true;
+            //if(res >=  0)
+            //{
+            //    result = 1;
 
-            }
-            else
-            {
-                result = false;
-            }
+            //}
+            //else
+            //{
+            //    result = 0;
+            //}
 
 
-            return result;
+            //return result;
 
        
         }
@@ -101,6 +101,15 @@ namespace PruebaLaboratorio.EFCore.Repository
                                                 .ToList();
             return tecFilter;
         }
+
+        public int GetIDElementoAsignado(int id)
+        {
+            var filter = _dBContext.TecnicoElementos.Single(t=> t.TecnicoId == id);
+             var res =  filter.ElementoId;
+
+            return res;
+        }
+
 
         public bool BorrarTecnico(int id)
         {

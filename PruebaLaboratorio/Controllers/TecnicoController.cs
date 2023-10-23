@@ -44,13 +44,13 @@ namespace PruebaLaboratorio.Controllers
         }
 
 
-        public bool SaveTecnico(GuardarTecnicoDTO tecnico)
+        public int SaveTecnico(GuardarTecnicoDTO tecnico)
         {
-            bool res;
+           
             _inputPortGuardar.Handler(tecnico);
-            res = ((IPresenter<bool>)_outputPortGuardar).Content;
+           return ((IPresenter<int>)_outputPortGuardar).Content;
 
-            return res;
+            
         }
 
         public List<TecnicoElementoDTO> FilterByNombreTecnico(string nombre)

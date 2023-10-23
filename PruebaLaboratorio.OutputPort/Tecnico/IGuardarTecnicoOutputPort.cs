@@ -8,6 +8,6 @@ namespace PruebaLaboratorio.OutputPort.Tecnico
 {
     public interface IGuardarTecnicoOutputPort
     {
-        public void Hadler(bool res);
+        public void Hadler(int res);
     }
 }

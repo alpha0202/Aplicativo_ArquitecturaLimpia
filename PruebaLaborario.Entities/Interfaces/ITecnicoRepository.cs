@@ -13,7 +13,7 @@ namespace PruebaLaborario.Entities.Interfaces
         List<Tecnico> GetAllTecnicos();
 
 
-        public bool AgregarTecnico(Tecnico tecnico);
+        public void AgregarTecnico(Tecnico tecnico);
 
         public void ActualizarTecnico(Tecnico tecnico);
 
@@ -24,5 +24,7 @@ namespace PruebaLaborario.Entities.Interfaces
 
 
         public bool BorrarTecnico(int id);
+
+        public int GetIDElementoAsignado(int id);
     }
 }
