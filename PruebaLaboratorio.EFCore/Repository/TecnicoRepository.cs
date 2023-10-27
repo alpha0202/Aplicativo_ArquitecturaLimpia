@@ -65,18 +65,25 @@ namespace PruebaLaboratorio.EFCore.Repository
 
             }
 
-          var tec = new Tecnico();
-             tec = _dBContext.Tecnicos.Where(t => t.TecnicoId == tecnico.TecnicoId).FirstOrDefault();
-            if (tec != null)
-            {
-                tec.Nombre = tecnico.Nombre;
-                tec.SueldoBase = tecnico.SueldoBase;
-                tec.Codigo = tecnico.Codigo;
-                tec.ElementosAsignados = tecnico.ElementosAsignados;
-                tec.Sucursal = tecnico.Sucursal;
 
+            //tecExist = _dBContext.Tecnicos.Where(t => t.TecnicoId == tecnico.TecnicoId).FirstOrDefault();
+            var tecExist = _dBContext.Tecnicos.Include(te => te.ElementosAsignados).FirstOrDefault(te => te.TecnicoId == tecnico.TecnicoId);
+
+            if (tecExist == null)
+            {
+                throw new Exception("no existe información para actualizar");
             }
-            _dBContext.Tecnicos.Update(tec);
+
+            tecExist.Nombre = tecnico.Nombre;
+            tecExist.SueldoBase = tecnico.SueldoBase;
+            tecExist.Codigo = tecnico.Codigo;
+            //tecExist.ElementosAsignados = tecnico.ElementosAsignados;
+            tecExist.Sucursal = tecnico.Sucursal;
+
+            _dBContext.TecnicoElementos.RemoveRange(tecExist.ElementosAsignados); //primero se retira el listado de elementos
+            _dBContext.Tecnicos.Update(tecExist);
+            _dBContext.TecnicoElementos.AddRange(tecnico.ElementosAsignados); // se vuelven a insertar
+
             _dBContext.SaveChanges();
 
         }
@@ -102,12 +109,35 @@ namespace PruebaLaboratorio.EFCore.Repository
             return tecFilter;
         }
 
-        public int GetIDElementoAsignado(int id)
+        public (int, int) GetIDElementoAsignado(int id)
         {
-            var filter = _dBContext.TecnicoElementos.Single(t=> t.TecnicoId == id);
-             var res =  filter.ElementoId;
+            int res, cantidad;
+            try
+            {
+                var filter = _dBContext.TecnicoElementos.FirstOrDefault(t => t.TecnicoId == id);
 
-            return res;
+                if (filter == null)
+                {
+                    res = 0;
+                    cantidad = 0;
+
+                    return (res, cantidad);
+                }
+                else
+                {
+                    res = filter.ElementoId;
+                    cantidad = filter.CantidadAsignada;
+
+                }
+                return (res, cantidad);
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+            
         }
 
 

@@ -38,6 +38,7 @@ namespace PruebaLaboratorio.Interactor.Tecnico
                 }
                 PruebaLaborario.Entities.Tecnico tec = new PruebaLaborario.Entities.Tecnico
                 {
+                    TecnicoId = tecnico.IdTecnico,
                     Nombre = tecnico.NombreTec,
                     Codigo = tecnico.CodigoTec,
                     SueldoBase = tecnico.SueldoBaseTec,
@@ -49,17 +50,10 @@ namespace PruebaLaboratorio.Interactor.Tecnico
                             TecnicoId = tecnico.IdTecnico,
                             CantidadAsignada = tecnico.CantidadElementos,
                             ElementoId = tecnico.ElementoId,
-                            
-                            //new Elemento
-                            //{
-                            //    Nombre = tecnico.NombreElemento
-                            //}
+                           
                         }
                     },
-                    //Sucursal = new Sucursal
-                    //{
-                    //    Nombre = tecnico.SucursalNombre
-                    //}
+                   
                 };
 
                 if(tecnico.IdTecnico == 0)

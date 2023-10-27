@@ -32,19 +32,24 @@ namespace PruebaLaboratorio.Controllers
 
 
         #region pruebas de acciones tecnicos
-        public FiltrarByIdDTO GetTecnicobyId(int id)
+        public FiltrarByIdDTO GetTecnicobyId(int idtecnico)
         {
-            var TecFilter = _tecnico.GetByIDTecnico(id);
-            var elementoid = _tecnico.GetIDElementoAsignado(id);
+            int resultadoElementos1;
+            int resultadoElementos2;
+
+            var TecFilter = _tecnico.GetByIDTecnico(idtecnico);
+            (resultadoElementos1,resultadoElementos2)  = _tecnico.GetIDElementoAsignado(idtecnico);
 
             FiltrarByIdDTO byIdDTO = new FiltrarByIdDTO
             {
-                IdTecnico = TecFilter.TecnicoId,
-                NombreTec = TecFilter.Nombre,
-                CodigoTec = TecFilter.Codigo,
-                SueldoBaseTec = (decimal)TecFilter.SueldoBase,
-                SucursalId = (int)TecFilter.SucursalId,
-                ElementoId = (int)elementoid
+                idtecnico = TecFilter.TecnicoId,
+                nombretec = TecFilter.Nombre,
+                codigotec = TecFilter.Codigo,
+                sueldobasetec = (decimal)TecFilter.SueldoBase,
+                sucursalid = (int)TecFilter.SucursalId,
+                elementoid = resultadoElementos1,
+                cantidadelementos = resultadoElementos2
+                
             };
 
             return byIdDTO;

@@ -9,13 +9,13 @@ namespace PruebaLaboratorio.Entities.Dto
     public class FiltrarByIdDTO
     {
       
-        public int IdTecnico { get; set; }
-        public string NombreTec { get; set; }
-        public string CodigoTec { get; set; }
-        public decimal SueldoBaseTec { get; set; }
-        public int SucursalId { get; set; }
-        public int ElementoId { get; set; }
-        public int CantidadElementos { get; set; }
+        public int idtecnico { get; set; }
+        public string nombretec { get; set; }
+        public string codigotec { get; set; }
+        public decimal sueldobasetec { get; set; }
+        public int sucursalid { get; set; }
+        public int elementoid { get; set; }
+        public int cantidadelementos { get; set; }
 
     }
 }

@@ -9,8 +9,8 @@ function ListSucursales() {
         cabeceras: ["Id","Nombre"],
         propiedades: ["sucursalId", "nombre"],
         propiedadId: "sucursalId",
-        editar: true,
-        eliminar: true,
+        editar: false,
+        eliminar: false,
 
 
     })

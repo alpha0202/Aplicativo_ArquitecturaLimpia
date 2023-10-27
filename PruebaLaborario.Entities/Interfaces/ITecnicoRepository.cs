@@ -25,6 +25,6 @@ namespace PruebaLaborario.Entities.Interfaces
 
         public bool BorrarTecnico(int id);
 
-        public int GetIDElementoAsignado(int id);
+        public (int, int) GetIDElementoAsignado(int id);
     }
 }
