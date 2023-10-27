@@ -15,15 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface Adapter", "Interf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Business Rules", "Application Business Rules", "{26195D79-6678-4697-B73C-72E0940F1100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.InputPort", "PruebaLaboratorio.InputPort\PruebaLaboratorio.InputPort.csproj", "{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaLaboratorio.InputPort", "PruebaLaboratorio.InputPort\PruebaLaboratorio.InputPort.csproj", "{E60BC6D7-7679-4D7E-9BB6-CECF9C5FDCE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.Interactor", "PruebaLaboratorio.Interactor\PruebaLaboratorio.Interactor.csproj", "{BD90FA57-22FB-4EB4-AB37-F76C96698BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaLaboratorio.Interactor", "PruebaLaboratorio.Interactor\PruebaLaboratorio.Interactor.csproj", "{BD90FA57-22FB-4EB4-AB37-F76C96698BEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.OutputPort", "PruebaLaboratorio.OutputPort\PruebaLaboratorio.OutputPort.csproj", "{895D1B4D-88C1-4F33-AF86-52EE8F950974}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaLaboratorio.OutputPort", "PruebaLaboratorio.OutputPort\PruebaLaboratorio.OutputPort.csproj", "{895D1B4D-88C1-4F33-AF86-52EE8F950974}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks and Driver", "Frameworks and Driver", "{8619F3D5-4D74-47D0-BCDD-D18DF3BD343E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaLaboratorio.Presenter", "PruebaLaboratorio.Presenter\PruebaLaboratorio.Presenter.csproj", "{8D328091-04CD-42EC-8654-277F681A2F4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaLaboratorio.Presenter", "PruebaLaboratorio.Presenter\PruebaLaboratorio.Presenter.csproj", "{8D328091-04CD-42EC-8654-277F681A2F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
