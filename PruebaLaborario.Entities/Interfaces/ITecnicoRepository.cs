@@ -23,7 +23,7 @@ namespace PruebaLaborario.Entities.Interfaces
         public List<Tecnico> FilterByNombreTecnico(string nombre);
 
 
-        public bool BorrarTecnico(int id);
+        public void BorrarTecnico(int id);
 
         public (int, int) GetIDElementoAsignado(int id);
     }

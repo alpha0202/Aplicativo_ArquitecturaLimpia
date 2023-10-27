@@ -32,32 +32,40 @@ namespace PruebaLaboratorio.Controllers
 
 
         #region pruebas de acciones tecnicos
-        public FiltrarByIdDTO GetTecnicobyId(int idtecnico)
-        {
-            int resultadoElementos1;
-            int resultadoElementos2;
-
-            var TecFilter = _tecnico.GetByIDTecnico(idtecnico);
-            (resultadoElementos1,resultadoElementos2)  = _tecnico.GetIDElementoAsignado(idtecnico);
-
-            FiltrarByIdDTO byIdDTO = new FiltrarByIdDTO
-            {
-                idtecnico = TecFilter.TecnicoId,
-                nombretec = TecFilter.Nombre,
-                codigotec = TecFilter.Codigo,
-                sueldobasetec = (decimal)TecFilter.SueldoBase,
-                sucursalid = (int)TecFilter.SucursalId,
-                elementoid = resultadoElementos1,
-                cantidadelementos = resultadoElementos2
-                
-            };
-
-            return byIdDTO;
 
 
+        //public int BorrarTecnico(int idtecnico)
+        //{
+        //   var result= _tecnico.BorrarTecnico(idtecnico);
+        //    return result;  
+        //}
+
+        //public FiltrarByIdDTO GetTecnicobyId(int idtecnico)
+        //{
+        //    int resultadoElementos1;
+        //    int resultadoElementos2;
+
+        //    var TecFilter = _tecnico.GetByIDTecnico(idtecnico);
+        //    (resultadoElementos1,resultadoElementos2)  = _tecnico.GetIDElementoAsignado(idtecnico);
+
+        //    FiltrarByIdDTO byIdDTO = new FiltrarByIdDTO
+        //    {
+        //        idtecnico = TecFilter.TecnicoId,
+        //        nombretec = TecFilter.Nombre,
+        //        codigotec = TecFilter.Codigo,
+        //        sueldobasetec = (decimal)TecFilter.SueldoBase,
+        //        sucursalid = (int)TecFilter.SucursalId,
+        //        elementoid = resultadoElementos1,
+        //        cantidadelementos = resultadoElementos2
+
+        //    };
+
+        //    return byIdDTO;
 
 
-        }
+
+
+        //}
 
         //public List<Tecnico> GetAllTecnicos()
         //{

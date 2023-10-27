@@ -8,5 +8,7 @@ namespace PruebaLaboratorio.OutputPort.Tecnico
 {
     public interface IBorrarTecnicoOutputPort
     {
+
+        public void Handler(int respuesta);
     }
 }

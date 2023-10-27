@@ -36,23 +36,12 @@ namespace PruebaLaboratorio.EFCore.Repository
 
         public void AgregarTecnico(Tecnico tecnico)
         {
-            //int result = 0;
+           
 
             _dBContext.Add(tecnico);
             _dBContext.AddRange(tecnico.ElementosAsignados);
            var res =  _dBContext.SaveChanges();
-            //if(res >=  0)
-            //{
-            //    result = 1;
-
-            //}
-            //else
-            //{
-            //    result = 0;
-            //}
-
-
-            //return result;
+          
 
        
         }
@@ -141,28 +130,29 @@ namespace PruebaLaboratorio.EFCore.Repository
         }
 
 
-        public bool BorrarTecnico(int id)
+        public void BorrarTecnico(int idtecnico)
         {
-            bool result = false;
+            //int result = 0;
             var tec = _dBContext.Tecnicos.Include(e => e.ElementosAsignados)
                                            .ThenInclude(t => t.Elemento)
                                          .Include(s => s.Sucursal)
-                                         .Where(t => t.TecnicoId == id)
+                                         .Where(t => t.TecnicoId == idtecnico)
                                          .FirstOrDefault();
 
             if (tec == null)
             {
-                return result= false;
+                //return result= 0;
             }
             else
             {
                 _dBContext.TecnicoElementos.RemoveRange(tec.ElementosAsignados);
                 _dBContext.Tecnicos.Remove(tec);
                 _dBContext.SaveChanges();
+                //result = 1;
             }
 
 
-            return result;
+            //return result;
         }
     }
 }

@@ -16,13 +16,21 @@ namespace PruebaLaboratorio.Controllers
         private readonly IGuardarTecnicoOutputPort _outputPortGuardar;
         private readonly IFiltrarTecnicoInputPort _inputPortFiltro;
         private readonly IFiltrarTecnicoOutputPort _outputPortFiltro;
+        private readonly IFiltrarByIdTecnicoInportPort _inputPortById;
+        private readonly IFiltrarByIdTecnicoOutputPort _outputPortById;
+        private readonly IBorrarTecnicoInputPort _inputPortBorrar;
+        private readonly IBorrarTecnicoOutputPort _outputPortBorrar;
 
         public TecnicoController(IListarTecnicosInputPort inputPortlistar,
                                  IListarTecnicosOutputPort outputPortList,
                                  IGuardarTecnicoInputPort inputPortGuardar,
                                  IGuardarTecnicoOutputPort outputPortGuardar,
                                  IFiltrarTecnicoInputPort inputPortFiltro,
-                                 IFiltrarTecnicoOutputPort outputPortFiltro)
+                                 IFiltrarTecnicoOutputPort outputPortFiltro,
+                                 IFiltrarByIdTecnicoInportPort inputPortById,
+                                 IFiltrarByIdTecnicoOutputPort outputPortById,
+                                 IBorrarTecnicoInputPort inputPortBorrar,
+                                 IBorrarTecnicoOutputPort outputPortBorrar)
         {
             _inputPortlistar = inputPortlistar;
             _outputPortList = outputPortList;
@@ -30,6 +38,10 @@ namespace PruebaLaboratorio.Controllers
             _outputPortGuardar = outputPortGuardar;
             _inputPortFiltro = inputPortFiltro;
             _outputPortFiltro = outputPortFiltro;
+            _inputPortById = inputPortById;
+            _outputPortById = outputPortById;
+            _inputPortBorrar = inputPortBorrar;
+            _outputPortBorrar = outputPortBorrar;
         }
 
         public IActionResult Index()
@@ -60,5 +72,22 @@ namespace PruebaLaboratorio.Controllers
             var res = ((IPresenter<List<TecnicoElementoDTO>>)_outputPortFiltro).Content;
             return res;
         }
+
+        public FiltrarByIdDTO GetTecnicobyId(int idtecnico)
+        {
+            _inputPortById.Handler(idtecnico);
+            var res = ((IPresenter<FiltrarByIdDTO>)_outputPortById).Content;
+            return res;
+        }
+
+        public int BorrarTecnico(int idtecnico)
+        {
+            _inputPortBorrar.Handler(idtecnico);
+            var res =((IPresenter<int>)_outputPortBorrar).Content;
+            return res;
+        }
+
+
+
     }
 }

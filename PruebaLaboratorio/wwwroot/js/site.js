@@ -18,6 +18,8 @@ async function ListTecnicos() {
         propiedadId: "tecnicoId",
         editar: true,
         eliminar: true,
+        urleliminar: "Tecnico/BorrarTecnico",
+        nombreparametroeliminar: "idtecnico",
         popup: true,
         titlePopup: "Tecnico"
 
@@ -40,7 +42,7 @@ async function ListTecnicos() {
         {
             type: "popup",
             urlguardar: "Tecnico/SaveTecnico",
-            urlrecuperar: "Sucursal/GetTecnicobyId",
+            urlrecuperar: "Tecnico/GetTecnicobyId",
             parametrorecuperar: "idtecnico",
             formulario: [
                 [
@@ -169,119 +171,3 @@ function Limpiar() {
 
 
 
-/***** 
- * async function ListTecnicos() {
-    var sucursales = await fetchGet("Sucursal/GetAllSucursales", "json", null, true)
-    var elementos = await fetchGet("Elemento/GetAllElementos", "json", null, true)
-    pintar({
-        url: "Tecnico/GetAllTecnicosElementos",
-        cabeceras: ["Nombre", "Codigo", "Sueldo", "Sucursal","Total Elementos Asinados"],
-        propiedades: ["nombreTec", "codigoTec", "sueldoBaseTec", "sucursalNombre", "cantidadElementos"],
-        propiedadId: "tecnicoId",
-        editar: true,
-        eliminar: true,
-        popup: true,
-        titlePopup:"Tecnico"
-
-
-    },
-        {
-            url: "Tecnico/FilterByNombreTecnico",
-            formulario: [
-                [
-                    {
-                        class: "col-md-6",
-                        label: "Filtrar nombre tecnico",
-                        type: "text",
-                        name: "nombre"
-                    }
-                ]
-            ]
-
-        },
-        {
-            type: "popup",
-            urlguardar: "Tecnico/SaveTecnico",
-            urlrecuperar: "Sucursal/GetTecnicobyId",
-            parametrorecuperar: "id",
-            formulario: [
-                [
-                    {
-                        class: "d-none",
-                        label: "Id Tecnico",
-                        type: "text",
-                        name: "idTecnico"
-                    },
-                    {
-                        class: "col-md-6",
-                        label: "Nombre Tecnico",
-                        type: "text",
-                        name: "nombretec",
-                        classControl: "ob max-200"
-                    },
-                    {
-                        class: "col-md-6",
-                        label: "Codigo",
-                        type: "text",
-                        name: "codigotec",
-                        classControl: "ob sln"
-                    },
-                    {
-                        class: "col-md-6",
-                        label: "Sueldo",
-                        type: "number",
-                        name: "sueldobasetec",
-                        classControl: "ob snyd"
-                    },
-                    {
-                        class: "col-md-6",
-                        label: "Seleccione Sucursal",
-                        type: "combobox",
-                        name: "sucursalid",
-                        data: sucursales,
-                        id: "cboSucursales",
-                        propiedadmostrar: "nombre",
-                        valuemostrar: "sucursalId",
-                        classControl: "ob"
-
-                    },
-                    {
-                        class: "col-md-6",
-                        label: "Seleccione Elemento",
-                        type: "combobox",
-                        name: "elementoid",
-                        data: elementos,
-                        id: "cboElementos",
-                        propiedadmostrar: "nombre",
-                        valuemostrar: "elementoId",
-                        classControl: "ob"
-
-                    },
-                    {
-                        class: "col-md-6",
-                        label: "cantidad por elementos",
-                        type: "number",
-                        name: "cantidadelementos",
-                        classControl: "ob snyd max-10 "
-                    },
-
-                ]
-            ]
-        },
-        
-
-
-    )
-
-
-
-
-
-
-
-
-
-}
-
- * 
- */

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PruebaLaboratorio.InputPort.Tecnico
 {
-    public class GetByIdTecnicoInputPort
+    public interface IFiltrarByIdTecnicoInportPort
     {
+        public void Handler(int idtecnico);
     }
 }

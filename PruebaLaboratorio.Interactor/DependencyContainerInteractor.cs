@@ -16,6 +16,8 @@ namespace PruebaLaboratorio.Interactor
             services.AddScoped<IListarTecnicosInputPort, ListarTecnicoInteractor>();
             services.AddScoped<IGuardarTecnicoInputPort, GuardarTecnicoInteractor>();
             services.AddScoped<IFiltrarTecnicoInputPort, FiltrarTecnicoInteractor>();
+            services.AddScoped<IFiltrarByIdTecnicoInportPort, FiltrarByIdTecnicoInteractor>();
+            services.AddScoped<IBorrarTecnicoInputPort, BorrarTecnicoInteractor>();
 
             return services;
         }
