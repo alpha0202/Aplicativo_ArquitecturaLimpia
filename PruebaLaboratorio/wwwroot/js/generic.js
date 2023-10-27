@@ -88,6 +88,9 @@ function validarKeyPress(idformulario) {
 
             //form-control ob (Sacamos su clase completa)
 
+
+
+
             nombreclases = e.target.className;
             //["form-control","ob"]
             clases = nombreclases.split(" ");
@@ -106,8 +109,11 @@ function validarKeyPress(idformulario) {
                 var cadena = e.target.value + String.fromCharCode(e.keyCode)
                 if (!/^[a-zA-Z,0-9]+$/.test(cadena)) {
                     e.preventDefault();
+                    alert("solo numeros y letras");
                 }
             }
+
+
 
 
             //Letras con espacio en blanco
@@ -135,6 +141,7 @@ function validarKeyPress(idformulario) {
                 var cadena = e.target.value + String.fromCharCode(e.keyCode)
                 if (!/^(\d+(\.\d*)?|\.\d+)$/.test(cadena)) {
                     e.preventDefault();
+                    
                 }
 
             }

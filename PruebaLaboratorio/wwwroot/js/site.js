@@ -5,6 +5,7 @@
 
 window.onload = function () {
     ListTecnicos();
+    
 }
 
 
@@ -58,13 +59,14 @@ async function ListTecnicos() {
                         type: "text",
                         name: "nombretec",
                         classControl: "ob max-200"
+
                     },
                     {
                         class: "col-md-6",
                         label: "Codigo",
                         type: "text",
                         name: "codigotec",
-                        classControl: "ob sln"
+                        classControl: "ob sln max-5"
                     },
                     {
                         class: "col-md-6",
@@ -102,7 +104,8 @@ async function ListTecnicos() {
                         label: "cantidad por elementos",
                         type: "number",
                         name: "cantidadelementos",
-                        classControl: "ob snyd max-10 "
+                        classControl: "ob snyd max-2",
+                        
                     },
 
                 ]

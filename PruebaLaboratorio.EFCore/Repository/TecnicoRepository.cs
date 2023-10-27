@@ -5,6 +5,7 @@ using PruebaLaboratorio.Entities.Dto;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,46 +35,75 @@ namespace PruebaLaboratorio.EFCore.Repository
         }
 
 
-        public void AgregarTecnico(Tecnico tecnico)
+        public int AgregarTecnico(Tecnico tecnico)
         {
-           
+            int guardado = 0;
+            var tecFilter = _dBContext.Tecnicos.Where(t => t.Nombre.Contains(tecnico.Nombre) 
+                                                        || t.TecnicoId == tecnico.TecnicoId)
+                                                 .Include(e => e.ElementosAsignados)
+                                                  .ThenInclude(t => t.Elemento)
+                                                 .Include(s => s.Sucursal)
+                                                 .ToList();
 
-            _dBContext.Add(tecnico);
-            _dBContext.AddRange(tecnico.ElementosAsignados);
-           var res =  _dBContext.SaveChanges();
-          
+            if (tecFilter is null)
+            {
+                _dBContext.Add(tecnico);
+                _dBContext.AddRange(tecnico.ElementosAsignados);
+               var res =  _dBContext.SaveChanges();
+                guardado = 1;
+            }
+            else
+            {
+                guardado = 0;
+            }
+            return guardado;
 
        
         }
 
         public void ActualizarTecnico(Tecnico tecnico)
         {
-            if (tecnico is null)
+            try
             {
-                throw new Exception("no existe información para actualizar");
+                if (tecnico is null)
+                {
+                    throw new Exception("no existe información para actualizar");
+
+                }
+
+
+                //tecExist = _dBContext.Tecnicos.Where(t => t.TecnicoId == tecnico.TecnicoId).FirstOrDefault();
+                var tecExist = _dBContext.Tecnicos.Include(te => te.ElementosAsignados).FirstOrDefault(te => te.TecnicoId == tecnico.TecnicoId);
+
+                if (tecExist == null)
+                {
+                    throw new Exception("no existe información para actualizar");
+                }
+
+                if (tecExist.SucursalId != tecnico.SucursalId)
+                {
+                    throw new Exception("no puede cambiar de sucursal");
+                }
+
+                tecExist.Nombre = tecnico.Nombre;
+                tecExist.SueldoBase = tecnico.SueldoBase;
+                tecExist.Codigo = tecnico.Codigo;
+                //tecExist.ElementosAsignados = tecnico.ElementosAsignados;
+                tecExist.Sucursal = tecnico.Sucursal;
+
+                _dBContext.TecnicoElementos.RemoveRange(tecExist.ElementosAsignados); //primero se retira el listado de elementos
+                _dBContext.Tecnicos.Update(tecExist);
+                _dBContext.TecnicoElementos.AddRange(tecnico.ElementosAsignados); // se vuelven a insertar
+
+                _dBContext.SaveChanges();
 
             }
-
-
-            //tecExist = _dBContext.Tecnicos.Where(t => t.TecnicoId == tecnico.TecnicoId).FirstOrDefault();
-            var tecExist = _dBContext.Tecnicos.Include(te => te.ElementosAsignados).FirstOrDefault(te => te.TecnicoId == tecnico.TecnicoId);
-
-            if (tecExist == null)
+            catch (Exception e)
             {
-                throw new Exception("no existe información para actualizar");
+
+                throw new Exception(e.Message, e);
             }
 
-            tecExist.Nombre = tecnico.Nombre;
-            tecExist.SueldoBase = tecnico.SueldoBase;
-            tecExist.Codigo = tecnico.Codigo;
-            //tecExist.ElementosAsignados = tecnico.ElementosAsignados;
-            tecExist.Sucursal = tecnico.Sucursal;
-
-            _dBContext.TecnicoElementos.RemoveRange(tecExist.ElementosAsignados); //primero se retira el listado de elementos
-            _dBContext.Tecnicos.Update(tecExist);
-            _dBContext.TecnicoElementos.AddRange(tecnico.ElementosAsignados); // se vuelven a insertar
-
-            _dBContext.SaveChanges();
 
         }
 

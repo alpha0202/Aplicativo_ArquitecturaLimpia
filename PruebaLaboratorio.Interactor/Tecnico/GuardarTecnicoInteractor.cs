@@ -58,9 +58,14 @@ namespace PruebaLaboratorio.Interactor.Tecnico
 
                 if(tecnico.IdTecnico == 0)
                 {
-                    _tecnicoRepository.AgregarTecnico(tec);
+                  var res =  _tecnicoRepository.AgregarTecnico(tec);
                     //_dBContext.AddRange(tecnico.ElementosAsignados);
-                    result = 1;
+                    if (res != 0)
+                    {
+                        result = 1;
+
+                    }
+                    result = 0;
                 }
                 else
                 {
